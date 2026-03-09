@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,19 +16,11 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var ndarraylike2scalar = require( '@stdlib/ndarray-base-ndarraylike2scalar' );
-var numelDimension = require( '@stdlib/ndarray-base-numel-dimension' );
-var getStride = require( '@stdlib/ndarray-base-stride' );
-var getOffset = require( '@stdlib/ndarray-base-offset' );
-var getData = require( '@stdlib/ndarray-base-data-buffer' );
-var strided = require( '@stdlib/blas-ext-base-slinspace' ).ndarray;
-
-
-// MAIN //
+import { float32ndarray, boolndarray } from '@stdlib/types/ndarray';
 
 /**
 * Fills a one-dimensional single-precision floating-point ndarray with linearly spaced values over a specified interval.
@@ -42,8 +34,8 @@ var strided = require( '@stdlib/blas-ext-base-slinspace' ).ndarray;
 *     -   a zero-dimensional ndarray specifying the end of the interval.
 *     -   a zero-dimensional ndarray specifying whether to include the end of the interval when writing values to the input ndarray.
 *
-* @param {ArrayLikeObject<Object>} arrays - array-like object containing ndarrays
-* @returns {ndarray} input ndarray
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float32Array = require( '@stdlib/array-float32' );
@@ -72,23 +64,9 @@ var strided = require( '@stdlib/blas-ext-base-slinspace' ).ndarray;
 * var arr = ndarray2array( out );
 * // returns [ 0.0, 20.0, 40.0, 60.0, 80.0, 100.0 ]
 */
-function slinspace( arrays ) {
-	var endpoint;
-	var start;
-	var stop;
-	var x;
-
-	x = arrays[ 0 ];
-	start = ndarraylike2scalar( arrays[ 1 ] );
-	stop = ndarraylike2scalar( arrays[ 2 ] );
-	endpoint = ndarraylike2scalar( arrays[ 3 ] );
-
-	strided( numelDimension( x, 0 ), start, stop, endpoint, getData( x ), getStride( x, 0 ), getOffset( x ) ); // eslint-disable-line max-len
-
-	return x;
-}
+declare function slinspace( arrays: [ float32ndarray, float32ndarray, float32ndarray, boolndarray ] ): float32ndarray;
 
 
 // EXPORTS //
 
-module.exports = slinspace;
+export = slinspace;
