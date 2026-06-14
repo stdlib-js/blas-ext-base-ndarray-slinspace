@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,17 +16,30 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { float32ndarray, boolndarray } from '@stdlib/types/ndarray';
 
 /**
-* Fill a one-dimensional single-precision floating-point ndarray with linearly spaced values over a specified interval.
+* Fills a one-dimensional single-precision floating-point ndarray with linearly spaced values over a specified interval.
 *
-* @module @stdlib/blas-ext-base-ndarray-slinspace
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray specifying the start of the interval.
+*     -   a zero-dimensional ndarray specifying the end of the interval.
+*     -   a zero-dimensional ndarray specifying whether to include the end of the interval when writing values to the input ndarray.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns input ndarray
 *
 * @example
 * var Float32Vector = require( '@stdlib/ndarray-vector-float32' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var slinspace = require( '@stdlib/blas-ext-base-ndarray-slinspace' );
 *
 * var x = new Float32Vector( [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ] );
 *
@@ -45,12 +58,9 @@
 * var out = slinspace( [ x, start, stop, endpoint ] );
 * // returns <ndarray>[ 0.0, 20.0, 40.0, 60.0, 80.0, 100.0 ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function slinspace( arrays: [ float32ndarray, float32ndarray, float32ndarray, boolndarray ] ): float32ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = slinspace;
